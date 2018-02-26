@@ -64,7 +64,7 @@ unsigned int randXbitInt(unsigned int n) {
 //tests for primality and return 1 if N is probably prime and 0 if N is composite
 unsigned int isProbablyPrime(unsigned int N) {
 
-  if (N%2==2) return 0; //not interested in even numbers (including 2)
+  if (N%2==0) return 0; //not interested in even numbers (including 2)
 
   unsigned int NsmallPrimes = 168;
   unsigned int smallPrimeList[168] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 
@@ -98,14 +98,40 @@ unsigned int isProbablyPrime(unsigned int N) {
   //if we're testing a large number switch to Miller-Rabin primality test
   /* Q2.1: Complete this part of the isProbablyPrime function using the Miller-Rabin pseudo-code */
   unsigned int r,d;
-
-  for (unsigned int n=0;n<NsmallPrimes;n++) {
-  
+  int n = N - 1;
+  while(n%2 == 0){
+  n =n/2;
+  r++;
   }
+  d = n;
+  for (unsigned int n=0;n<NsmallPrimes;n++) {
+    int  x=modExp(n,d,N);
+    if(x==1 || x==N-1){
+      continue;
+     }
+    for(int i=1;i< r; i++){
+     x=modprod(x,x,N);
+     if(x==1){
+      return 0;
+     }
+     if(x==N-1){
+     continue;
+     }  
+  }
+  return 0;
+ }
   return 1; //true
 }
 
 //Finds a generator of Z_p using the assumption that p=2*q+1
 unsigned int findGenerator(unsigned int p) {
   /* Q3.3: complete this function and use the fact that p=2*q+1 to quickly find a generator */
+int q=(p-1)/2;
+for(int i=1;i<p;i++)
+{
+  if((modExp(i,q,p) != 1)&&(modExp(i,2,p) != 1)){
+	return 1;
+   }
+}
+return 0;
 }
