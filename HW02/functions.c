@@ -16,14 +16,17 @@ unsigned int modprod(unsigned int a, unsigned int b, unsigned int p) {
   }
   int za = a;
   int ab = 0;
-  for (int j=0;j<i; j++){
+  unsigned int j=0;
+  while (j<i){
      if(num[j]  == 1)
      {
       ab = (ab +za)%p;
+	}
       za = 2*za%p;
-     }  
-  return ab;
+       j = j+1;
 }
+  return ab;
+
 }
 //compute a^b mod p safely
 unsigned int modExp(unsigned int a, unsigned int b, unsigned int p) {
