@@ -61,7 +61,7 @@ int testpoint(complex_t c){
 
 // perform Mandelbrot iteration on a grid of numbers in the complex plane
 // record the  iteration counts in the count array
-void  mandelbrot(int Nre, int Nim, =  complex_t cmin, complex_t cmax, float *count){ 
+void  mandelbrot(int Nre, int Nim, complex_t cmin, complex_t cmax, float *count){ 
   int n,m;
 
   complex_t c;
@@ -71,7 +71,7 @@ void  mandelbrot(int Nre, int Nim, =  complex_t cmin, complex_t cmax, float *cou
 
   // Q2c: add a compiler directive to split the outer for loop amongst threads here
   
-  #pragma omp parallel for private(m){
+  #pragma omp parallel for private(m)
     for(m=0;m<Nre;++m){
       c.r = cmin.r + dr*m;
       c.i = cmin.i + di*n;
@@ -81,7 +81,7 @@ void  mandelbrot(int Nre, int Nim, =  complex_t cmin, complex_t cmax, float *cou
     }
   }
 
-}
+
 
 int main(int argc, char **argv){
 
@@ -94,7 +94,7 @@ int main(int argc, char **argv){
   int Nthreads = atoi(argv[3]);
 
   // Q2b: set the number of OpenMP threads to be Nthreads here:
-  int threads = atoi(argv[argc-1]);
+  omp_set_num_threads(atoi(argv[argc-1]));
   // storage for the iteration counts
   float *count = (float*) malloc(Nre*Nim*sizeof(float));
 
