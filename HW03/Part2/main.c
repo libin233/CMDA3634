@@ -60,7 +60,8 @@ int main (int argc, char **argv) {
      distributed amounst the MPI ranks  */
   unsigned int N = p-1; //total loop size
   unsigned int start, end;
-  
+  unsigned int done, sum = 0;
+  unsigned int Ninterval = 1000;  
   start = ((N)/size)*rank; 
   end = start + (N/size);
 
@@ -70,8 +71,14 @@ int main (int argc, char **argv) {
   double Runtime = 0;
   Stime = MPI_Wtime();  
   for (unsigned int i=start;i<end;i++) {
-    if (modExp(g,i+1,p)==h)
+    if (modExp(g,i+1,p)==h){
       printf("Secret key found! x = %u \n", i+1);
+  	done = 1;
+      }
+    if ((i - start) % Ninterval == 0){
+      MPI_Allreduce(&done, &sum, 1, MPI_UNSIGNED, MPI_SUM, MPI_COMM_WORLD);
+      if(sum == 1) break;
+      }
   }
   MPI_Barrier(MPI_COMM_WORLD);
   Etime = MPI_Wtime();
