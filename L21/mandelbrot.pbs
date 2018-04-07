@@ -7,10 +7,10 @@
 #PBS -j oe
 #PBS -A CMDA3634SP18
 
-#cd $PBS_O_WORKDIR
+cd $PBS_O_WORKDIR
 
-#module purge
-#module load gcc cuda
+module purge
+module load gcc cuda
 
 make
 

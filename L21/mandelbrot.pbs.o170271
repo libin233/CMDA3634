@@ -1,0 +1,57 @@
+nvcc -arch=sm_60 -I. -c mandelbrot.cu
+mandelbrot.cu(101): error: no instance of overloaded function "cudaMalloc" matches the argument list
+            argument types are: (float, unsigned long)
+
+mandelbrot.cu(128): error: argument of type "float" is incompatible with parameter of type "const void *"
+
+2 errors detected in the compilation of "/scratch-local/170271.master.cluster/tmpxft_0001556c_00000000-7_mandelbrot.cpp1.ii".
+make: *** [mandelbrot.o] Error 2
+Nthreads=1
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=5
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=9
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=13
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=17
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=21
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=25
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=29
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=33
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=37
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=41
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=45
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=49
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=53
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=57
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+Nthreads=61
+/opt/torque/torque/spool/mom_priv/jobs/170271.master.cluster.SC: line 20: ./mandelbrot: No such file or directory
+
+Usage:
+ kill [options] <pid|name> [...]
+
+Options:
+ -a, --all              do not restrict the name-to-pid conversion to processes
+                        with the same uid as the present process
+ -s, --signal <sig>     send specified signal
+ -q, --queue <sig>      use sigqueue(2) rather than kill(2)
+ -p, --pid              print pids without signaling them
+ -l, --list [=<signal>] list signal names, or convert one to a name
+ -L, --table            list signal names and numbers
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see kill(1).
