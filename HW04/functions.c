@@ -220,7 +220,7 @@ void convertStringToZ(unsigned char *string, unsigned int Nchars,
 	if (i%2 ==0)
 	{
 		unsigned int pos = i/2;
-		Z[pos] = (unsigned int)string[i]*1000+(unsigned int )string[i+1];
+		Z[pos] = (unsigned int)string[i]*256+(unsigned int )string[i+1];
 	}
 }
   if(cpi == 3){
@@ -230,7 +230,7 @@ void convertStringToZ(unsigned char *string, unsigned int Nchars,
 		if (i%3 == 0)
 		{
 			unsigned int pos = i/3;
-			Z[pos] = (unsigned int)string[i]*1000000+(unsigned int)string[i+1]*1000+(unsigned int)string[i+2];
+			Z[pos] = (unsigned int)string[i]*256^2+(unsigned int)string[i+1]*256+(unsigned int)string[i+2];
 		}
 
 	}
@@ -260,8 +260,8 @@ if(cpi ==2)
 #pragma omp parallel for
 	for (int i = 0; i < Nints; i++)
 	{
-		string[i*2]=(unsigned char)(Z[i]/1000);
-		string[i*2+1] = (unsigned char)(Z[i]%1000);
+		string[i*2]=(unsigned char)(Z[i]/256);
+		string[i*2+1] = (unsigned char)(Z[i]%256);
 	}
 
 }
@@ -271,9 +271,9 @@ if(cpi ==3)
 #pragma omp parallel for
 	for(int i = 0; i < Nints; i++)
 	{
-		string[i*3]= (unsigned char)(Z[i]/1000000);
-		string[i*3+1]= (unsigned char)((Z[i]/1000)%1000);
-		string[i*3+2] = (unsigned char)(Z[i]%1000);
+		string[i*3]= (unsigned char)(Z[i]/256^2);
+		string[i*3+1]= (unsigned char)((Z[i]/256)%256);
+		string[i*3+2] = (unsigned char)(Z[i]%256);
 	}
 }
 
