@@ -222,11 +222,11 @@ void convertStringToZ(unsigned char *string, unsigned int Nchars,
 		unsigned int pos = i/2;
 		Z[pos] = (unsigned int)string[i]*256+(unsigned int )string[i+1];
 	}
-}
+   }
+ 
   if(cpi == 3){
   #pragma omp parallel for 
-   for (int i = 0; i < strlen(string); i ++)
-	{
+  for (int i = 0; i < strlen(string); i ++){
 		if (i%3 == 0)
 		{
 			unsigned int pos = i/3;

@@ -93,12 +93,10 @@ int main (int argc, char **argv) {
   {
   #pragma omp for
   for (unsigned int i=0;i<p-1;i++) {
-    if (modExp(g,i+1,p)==h) {
+    if (ff ==0 && modExp(g,i+1,p)==h) {
       printf("Secret key found! x = %u \n", i+1);
       ff = 1;
     }
-//    if (ff == 1)
-  //       break;
   }
   }
   double endTime = omp_get_wtime();
