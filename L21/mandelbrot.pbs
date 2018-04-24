@@ -9,10 +9,10 @@
 
 cd $PBS_O_WORKDIR
 
-module purge
-module load gcc cuda
+ module purge
+ module load gcc cuda
 
-make
+ make
 
 for ((Nthreads=1;Nthreads<=64;Nthreads+=4))
 do 
